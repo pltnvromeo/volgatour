@@ -39,3 +39,4 @@ class CategoryView(viewsets.ModelViewSet):
 class ComplexityView(viewsets.ModelViewSet):
     serializer_class = ComplexitySerializer
     queryset = Complexity.objects.all()
+

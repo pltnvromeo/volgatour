@@ -13,5 +13,9 @@ router.register(r'categories', views.CategoryView, 'category')
 
 urlpatterns = ([
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('users/', include('users.urls', namespace='users'))
 ])
+
+admin.site.site_header = 'Volgatour панель администрирования'
+admin.site.index_title = 'Редактирование пользователей и экскурсий'

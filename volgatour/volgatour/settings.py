@@ -1,5 +1,5 @@
-
 import os
+import corsheaders
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -16,17 +16,6 @@ SECRET_KEY = 'django-insecure-gv(d4aiso=b7wx44j0-7l)$r0(x%9mhx3=rv9yeaw4ck)sy0qr
 DEBUG = True
 
 ALLOWED_HOSTS = []
-#-------------для подключения react------------------
-CORS_ORIGIN_ALLOW_ALL = True
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
-#------------------------------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -35,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
     'excursions',
     'corsheaders',
     'rest_framework'
@@ -43,14 +33,29 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Промежуточное ПО CORS должно быть здесь
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
+#-------------для подключения react------------------
+CORS_ORIGIN_ALLOW_ALL = True
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost',
+    'http://localhost:8000',
+]
+#CORS_ORIGIN_WHITELIST = (
+#    'http://localhost:3000',
+#)
+#------------------------------------------------------
 ROOT_URLCONF = 'volgatour.urls'
 
 TEMPLATES = [
@@ -109,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
 TIME_ZONE = 'UTC'
 
@@ -120,8 +125,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
