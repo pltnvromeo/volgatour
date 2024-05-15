@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Excursion, Route, Complexity, Category
+from .models import Excursion, Route, Complexity, Category, Booking
 
 
 class ComplexitySerializer(serializers.ModelSerializer):
@@ -37,3 +37,15 @@ class ExcursionSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'title', 'description', 'small_description', 'photo', 'datee', 'timee', 'guide_id', 'cost',
             'category', 'route', 'group_size')
+
+
+class BookingSerializer(serializers.ModelSerializer):
+    excursion = ExcursionSerializer()
+    # Добавляем поле для отображения данных о пользователе
+    booking_user = serializers.PrimaryKeyRelatedField(read_only=True)
+
+    class Meta:
+        model = Booking
+        fields = (
+            'id', 'booking_user', 'excursion', 'num_of_reserve'
+        )

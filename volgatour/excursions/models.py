@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Модель экскурсии:
@@ -9,7 +10,7 @@ class Excursion(models.Model):
     photo = models.CharField(verbose_name="Фото")
     datee = models.DateField(verbose_name="Дата проведения")
     timee = models.TimeField(verbose_name="Время")
-    guide_id = models.IntegerField(verbose_name="Гид")
+    guide: User = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name="Гид")
     cost = models.FloatField(verbose_name="Стоимость")
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Категория")
     route = models.ForeignKey('Route', on_delete=models.CASCADE, verbose_name="Маршрут")
@@ -17,6 +18,7 @@ class Excursion(models.Model):
 
     def __str__(self):
         return self.title
+
     class Meta:
         verbose_name = "Экскурсии"
         verbose_name_plural = "Экскурсии"
@@ -25,10 +27,9 @@ class Excursion(models.Model):
 # Модель Маршрута:
 class Route(models.Model):
     name = models.CharField(max_length=50, verbose_name="Название маршрута")
-    complexity = models.ForeignKey('Complexity', on_delete=models.PROTECT, null=True, verbose_name="Сложность")
+    complexity = models.ForeignKey('Complexity', on_delete=models.PROTECT, blank=True, null=True, verbose_name="Сложность")
     duration = models.TimeField(verbose_name="Длительность")
     length = models.FloatField(max_length=6, verbose_name="Протяженность")
-
 
     def __str__(self):
         return self.name
@@ -44,6 +45,7 @@ class Complexity(models.Model):
 
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = "Сложности"
         verbose_name_plural = "Сложности"
@@ -55,10 +57,24 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
     class Meta:
         verbose_name = "Категории"
         verbose_name_plural = "Категории"
-# Модель Пользователя:
+
+
 # Модель Бронирования:
+class Booking(models.Model):
+    booking_user: User = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name="Пользователь")
+    excursion = models.ForeignKey('Excursion', on_delete=models.CASCADE, blank=True, null=True,
+                                  verbose_name="Экскурсия")
+    num_of_reserve = models.IntegerField(verbose_name="Количество бронируемых мест")
+
+    def __str__(self):
+        return self.booking_user.username
+
+    class Meta:
+        verbose_name = "Бронирование"
+        verbose_name_plural = "Бронирования"
 # ?Модель Гида:
 # ?Модель Отзыва:

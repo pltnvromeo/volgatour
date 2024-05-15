@@ -42,6 +42,7 @@ def register_view(request):
             last_name = data.get('last_name')
             if not User.objects.filter(username=username, email=email).exists():
                 user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name, is_staff=False)
+                login(request, user)#!!!! После успешного создания пользователя, выполняем вход, ПРОВЕРИТЬ
                 return JsonResponse({'message': 'Пользователь успешно зарегистрирован и вошел в систему'})
             else:
                 return JsonResponse({'error': 'Пользователь с таким логином или эл.почтой уже существует'}, status=400)
