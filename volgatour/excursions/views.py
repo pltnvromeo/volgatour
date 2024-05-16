@@ -8,7 +8,9 @@ from rest_framework import viewsets
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from django.contrib.auth.models import User
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+
 
 class ExcursionView(viewsets.ModelViewSet):
     serializer_class = ExcursionSerializer
@@ -53,6 +55,7 @@ class BookingView(viewsets.ModelViewSet):
             return Booking.objects.filter(booking_user_id=user_id)
         return super().get_queryset()
 
+
 @csrf_exempt
 def create_booking(request):
     if request.method == 'POST':
@@ -81,3 +84,13 @@ def create_booking(request):
             print("Ошибка при создании бронирования:", e)
             # Возвращаем ошибку, если что-то пошло не так
             return JsonResponse({'error': str(e)}, status=400)
+
+
+class ExcursionBookingsView(APIView):
+    def get(self, request, excursion_id):
+        try:
+            bookings = Booking.objects.filter(excursion_id=excursion_id)
+            serializer = BookingSerializer(bookings, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)

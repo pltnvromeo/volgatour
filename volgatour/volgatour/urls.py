@@ -2,9 +2,7 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from excursions import views
 from rest_framework import routers
-from django.conf import settings
-from django.conf.urls.static import static
-from rest_framework.decorators import api_view
+
 
 router = routers.DefaultRouter()
 router.register(r'excursions', views.ExcursionView, 'excursion')
@@ -17,6 +15,7 @@ urlpatterns = ([
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/create-booking/', views.create_booking),
+    path('api/excursions/<int:excursion_id>/bookings/', views.ExcursionBookingsView.as_view()),
     path('users/', include('users.urls', namespace='users'))
 ])
 
