@@ -1,5 +1,12 @@
 from rest_framework import serializers
 from .models import Excursion, Route, Complexity, Category, Booking
+from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name', 'email')
 
 
 class ComplexitySerializer(serializers.ModelSerializer):
@@ -31,11 +38,12 @@ class CategorySerializer(serializers.ModelSerializer):
 class ExcursionSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     route = RouteSerializer()
+    guide = UserSerializer()
 
     class Meta:
         model = Excursion
         fields = (
-            'id', 'title', 'description', 'small_description', 'photo', 'datee', 'timee', 'guide_id', 'cost',
+            'id', 'title', 'description', 'small_description', 'photo', 'datee', 'timee', 'guide', 'cost',
             'category', 'route', 'group_size')
 
 
