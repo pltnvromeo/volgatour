@@ -1,0 +1,290 @@
+.banner{
+    margin-top: 10px;
+    border-radius: 30px;
+}
+.banner__image{
+    position: relative;
+}
+.banner__image img {
+    border-radius: 30px;
+    border: 10px solid darkslategray;
+    box-shadow: 20px 20px 0px cadetblue;
+}
+.banner__text{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    color: aliceblue;
+    text-shadow: 1px 1px 1px #000;
+
+}
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Это гарантирует, что ваш контейнер займет как минимум всю видимую область */
+}
+
+.banner__text h1{
+    font-weight: bold;
+}
+.banner__text h4{
+    font-weight: normal;
+}
+
+.searchform{
+    margin-top: -120px;
+    margin-left: 40px;
+    margin-right: 40px;
+    border: darkslategray solid 4px;
+    border-radius: 20px;
+    padding: 15px;
+    position: relative;
+    background-color: azure;
+    box-shadow: 10px 10px 0px cadetblue;
+}
+.searchfrom__title{
+    text-align: center;
+    font-size: 20px;
+    color: darkslategray;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+body{
+    background-color: lightgray;
+}
+.cardlist{
+    background-color: azure;
+    border: darkslategray solid 10px;
+    min-height: 300px;
+    box-shadow: 20px 20px 0px cadetblue;
+    margin-top: 45px;
+    border-radius: 30px;
+    padding: 20px;
+}
+.cardlist__title{
+    text-align: center;
+    font-size: 20px;
+    color: darkslategray;
+    font-weight: bold;
+}
+.booking-card_title{
+    display: inline;
+}
+.booking-card_text{
+    display: inline;
+}
+.footer {
+    margin-top: 45px;
+    background-color: #333333;
+    width: 100%;
+    height: 40px;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+
+}
+.registerForm{
+    background-color: azure;
+    border: darkslategray solid 8px;
+    box-shadow: 15px 15px 0px cadetblue;
+    margin-top: 35px;
+    border-radius: 30px;
+    padding: 20px;
+}
+.loginFormWrapper{
+    position: relative;
+    min-height: 80vh;
+}
+.custom-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: white !important; /* Устанавливаем белый цвет текста */
+}
+.footer-link {
+    text-decoration: none;
+    font-size: 11px;
+    color: white;
+    margin-right: 10px;
+}
+.pageelem{
+    background-color: azure;
+    border: darkslategray solid 10px;
+    min-height: 300px;
+    box-shadow: 20px 20px 0px cadetblue;
+    margin-top: 45px;
+    border-radius: 30px;
+    padding: 20px;
+}
+.pageelem_children{
+    border: darkslategray solid 5px;
+    box-shadow: 8px 8px 0px cadetblue;
+    margin-top: 20px;
+}
+.pageelem__title{
+    text-align: center;
+    font-size: 20px;
+    color: darkslategray;
+    font-weight: bold;
+}
+
+.cardlist__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.cardlist__content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.excursion-title{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -15px;
+    font-size: 50px;
+    color: darkslategray;
+}
+
+.card-text {
+    min-height: 100px;
+    overflow: hidden; /* Скрытие излишнего текста */
+    text-overflow: ellipsis; /* Добавление многоточия в конце обрезанного текста */
+    /* Необходимые префиксы для кроссбраузерной поддержки */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Число строк, после которых будет обрезан текст */
+}
+.booking-card_title{
+    font-weight: bold;
+}
+.excursion-main-description{
+    margin-top: 10px;
+}
+.excursion-main-description__info p {
+    text-indent: 30px; /* Задайте желаемый отступ */
+}
+.excursion_photo {
+    float: left;
+    border-radius: 25px;
+    border: cadetblue solid 5px;
+    width: 450px;
+    height: 400px;
+    margin-right: 20px; /* Расстояние между фото и текстом */
+    margin-bottom: 5px; /* Расстояние между фото и текстом снизу */
+}
+
+.excursion_photo img {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняем пропорции фото, не растягивая его */
+}
+.excursion-details {
+    clear: both; /* Гарантируем, что этот контейнер начнется с новой строки */
+}
+
+.excursion-description{
+    margin-top: 5px;
+    display: block;
+}
+.excursion-description__title{
+    display: inline-block;
+    font-weight: bold;
+}
+.excursion-description__info{
+    display: inline-block;
+    margin-left: 10px;
+}
+.card-text__title{
+    border-bottom: 2px solid darkslategray;
+    height: 50px;
+}
+
+.loginForm{
+    width: 400px;
+    padding: 15px;
+    background-color: azure;
+    border: darkslategray solid 5px;
+    box-shadow: 10px 10px 0px cadetblue;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* Для мобильных устройств (телефоны) */
+@media (max-width: 768px) {
+    .cardlist .card-group > .card {
+        flex: 0 0 95%; /* Одна карточка на всю ширину */
+        max-width: 100%;
+    }
+    .booking-card-list .card-group > .card{
+        flex: 0 0 95%; /* Одна карточка на всю ширину */
+        max-width: 100%;
+    }
+    .excursion-description {
+        flex-direction: column;
+    }
+    .banner__text h1{
+        font-size: 25px;
+    }
+    .banner__text h4{
+        font-size: 20px;
+    }
+    .pageelem__links {
+        display: inline;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .contact-icon-container {
+        display: inline;
+
+    }
+
+    .pageelem__links span {
+        font-size: 16px;
+        display: inline;
+    }
+
+    .excursion_photo {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .searchform{
+        margin-top: -35px;
+    }
+    .excursion-description__info {
+        flex: none;
+    }
+}
+
+/* Для планшетов и устройств среднего размера */
+@media (min-width: 768px) and (max-width: 992px) {
+    .cardlist .card-group > .card {
+        flex: 0 0 45%; /* Две карточки на ширину */
+        max-width: 45%;
+    }
+    .booking-card-list .card-group > .card{
+        flex: 0 0 95%; /* Одна карточка на всю ширину */
+        max-width: 100%;
+    }
+    .searchform{
+        margin-top: -90px;
+    }
+}
+
+/* Для десктопов и устройств большого размера */
+@media (min-width: 992px) {
+    .cardlist .card-group > .card {
+        flex: 0 0 30%; /* Три карточки на ширину */
+        max-width: 30%;
+    }
+    .booking-card-list .card-group > .card{
+        flex: 0 0 46%;
+        max-width: 46%;
+    }
+}
